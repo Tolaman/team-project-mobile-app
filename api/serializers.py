@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import report
+from .models import Report
 
 class UserSerializer(serializers.ModelSerializer):
   class Meta:
@@ -9,12 +9,13 @@ class UserSerializer(serializers.ModelSerializer):
     extra_kwargs = {'password': {'write_only': True}}
 
   def create(self, validated_data):
-    user = user.objects.create_user(**validated_data)
+    print(validated_data)
+    user = User.objects.create_user(**validated_data)
     return user
   
 class ReportSerializer(serializers.ModelSerializer):
   class Meta:
-    model = report
+    model = Report
     fields = ['id', 'full_name', 'gender', 'location', 'condition', 'date', 'user']
     extra_kwargs = {
       'user': {'read_only': True}
