@@ -19,6 +19,14 @@ class ReportListView(generics.ListCreateAPIView):
     else:
       print(serializer.errors)
 
+class ReportDelete(generics.DestroyAPIView):
+  serializer_class = ReportSerializer
+  permission_classes = [IsAuthenticated]
+
+  def get_queryset(self):
+    user = self.request.user
+    return Report.objects.filter(user=user)
+
 # Create your views here.
 class CreateUserView(generics.CreateAPIView):
   queryset = User.objects.all()
