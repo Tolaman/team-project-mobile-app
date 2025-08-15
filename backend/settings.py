@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-# from datetime import timedelta
-# import os
+from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,18 +31,18 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 REST_FRAMEWORK = {
-    # "DEFAULT_AUTHENTIFICATION_CLASSES": (
-    #     "rest_frzmework.simplejwt.authentification.JWTAuthentification",
-    # ),
+    "DEFAULT_AUTHENTIFICATION_CLASSES": (
+        "rest_frzmework.simplejwt.authentification.JWTAuthentification",
+    ),
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthentification",
+        "rest_framework.permissions.IsAuthenticated",
     ],
 }
 
-# SIMPLE_JWT = {
-#     "ACCESS_TOKEN_LIFETIME": timedelta(minites=60),
-#     "REFRESH)TOKEN_LIFETIME": timedelta(days=1),
-# }
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH)TOKEN_LIFETIME": timedelta(days=1),
+}
 
 # Application definition
 
